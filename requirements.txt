@@ -2,3 +2,4 @@ discord
 asyncio
 googletrans
 pip
+os
