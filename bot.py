@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord.ext.commands import Bot
 import asyncio
 from googletrans import Translator
+import os
 
 bot = commands.Bot(command_prefix='?t')
 bot.remove_command('help')
