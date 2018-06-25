@@ -71,4 +71,4 @@ async def phelp(ctx):
 async def dhelp(ctx):
     await bot.send_message(ctx.message.author, "```the only command \n?tr 'text' s-'source language' d-'destination language' \nif source language is not provided it will be assigned automatically \nif destination language is not provided it's automatically set as english```")
     
-bot.run("NDU0OTE5NDQ1ODAzMDQwNzY4.Df0cSQ.zQT9q3ghq-xYZkgmVou0c-zwmUE")
+bot.run(str(os.environ.get('BOT_TOKEN')))
