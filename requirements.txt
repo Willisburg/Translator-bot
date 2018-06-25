@@ -2,4 +2,6 @@ discord
 asyncio
 googletrans
 pip
-os
+pyquery==1.2.8
+python-binary-memcached==0.24.2
+simplejson
