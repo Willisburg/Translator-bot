@@ -69,12 +69,12 @@ async def r(ctx, *arg):
 """public help message"""    
 @bot.command(pass_context=True)
 async def phelp(ctx):
-    await bot.send_message(ctx.message.channel, "```[] ?tr 'text' s-'source language' d-'destination language' \n -translates a message \n -if source language is not provided it will be assigned automatically \n -if destination language is not provided it's automatically set as english\n[] ?tinvite \n -sends a message to the message author with the auth to bot```")
+    await bot.send_message(ctx.message.channel, "```[] ?tr 'text' s-'source language tag' d-'destination language tag' \n -translates a message \n -if source language tag is not provided it will be assigned automatically \n -if destination language tag is not provided it's automatically set as english(en) \n *do not use the apostrophe(') \n[] ?tinvite \n -sends a message to the message author with the auth to bot```")
 
 """direct help message"""
 @bot.command(pass_context=True)
 async def dhelp(ctx):
-    await bot.send_message(ctx.message.author, "```[] ?tr 'text' s-'source language' d-'destination language' \n -translates a message \n -if source language is not provided it will be assigned automatically \n -if destination language is not provided it's automatically set as english\n[] ?tinvite \n -sends a message to the message author with the auth to bot```")
+    await bot.send_message(ctx.message.author, "```[] ?tr 'text' s-'source language tag' d-'destination language tag' \n -translates a message \n -if source language tag is not provided it will be assigned automatically \n -if destination language tag is not provided it's automatically set as english(en) \n *do not use the apostrophe(') \n[] ?tinvite \n -sends a message to the message author with the auth to bot```")
 
 """invite to server"""
 @bot.command(pass_context=True)
