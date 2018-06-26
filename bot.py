@@ -65,11 +65,16 @@ async def r(ctx, *arg):
 """public help message"""    
 @bot.command(pass_context=True)
 async def phelp(ctx):
-    await bot.send_message(ctx.message.channel, "```the only command \n?tr 'text' s-'source language' d-'destination language' \nif source language is not provided it will be assigned automatically \nif destination language is not provided it's automatically set as english \nexample: ?tr nani s-ja```")
+    await bot.send_message(ctx.message.channel, "```[] ?tr 'text' s-'source language' d-'destination language' \n -translates a message \n -if source language is not provided it will be assigned automatically \n -if destination language is not provided it's automatically set as english\n[] ?tinvite \n -sends a message to the message author with the auth to bot```")
 
 """direct help message"""
 @bot.command(pass_context=True)
 async def dhelp(ctx):
-    await bot.send_message(ctx.message.author, "```the only command \n?tr 'text' s-'source language' d-'destination language' \nif source language is not provided it will be assigned automatically \nif destination language is not provided it's automatically set as english```")
+    await bot.send_message(ctx.message.author, "```[] ?tr 'text' s-'source language' d-'destination language' \n -translates a message \n -if source language is not provided it will be assigned automatically \n -if destination language is not provided it's automatically set as english\n[] ?tinvite \n -sends a message to the message author with the auth to bot```")
+
+"""invite to server"""
+@bot.command(pass_context=True)
+async def invite(ctx):
+    await bot.send_message(ctx.message.author, "https://discordapp.com/oauth2/authorize?client_id=460891148668502026&permissions=8192&scope=bot")
     
 bot.run(str(os.environ.get('BOT_TOKEN')))
