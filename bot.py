@@ -11,7 +11,7 @@ bot.remove_command('help')
 """ready message"""
 @bot.event
 async def on_ready():
-    await bot.change_presence(game=discord.Game(name='?thelp'))
+    await bot.change_presence(game=discord.Game(name='?tphelp/?tdhelp'))
     print('Translator v1.0 --')
     print('Successfully joined account: ' + bot.user.name)
 
