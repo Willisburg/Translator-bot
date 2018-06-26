@@ -28,7 +28,11 @@ async def on_server_join(server):
 """translating"""            
 @bot.command(pass_context=True)
 async def r(ctx, *arg):
-    await bot.delete_message(ctx.message)
+    try:
+        await bot.delete_message(ctx.message)
+    except:
+        a=0
+        
     try:
         text = str(' '.join(arg))
     except:
