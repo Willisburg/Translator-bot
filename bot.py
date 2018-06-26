@@ -11,17 +11,34 @@ bot.remove_command('help')
 """ready message"""
 @bot.event
 async def on_ready():
-    await bot.change_presence(game=discord.Game(name='?tphelp/?tdhelp'))
+    if(len(bot.servers)==1):
+        await bot.change_presence(game=discord.Game(name='?thelp with '+str(len(bot.servers))+" server"))
+    else:
+        await bot.change_presence(game=discord.Game(name='?thelp with '+str(len(bot.servers))+" servers"))
     print('Translator v1.0 --')
     print('Successfully joined account: ' + bot.user.name)
 
+"""server leave message"""
+@bot.event
+async def on_server_remove(server):
+    if(len(bot.servers)==1):
+        await bot.change_presence(game=discord.Game(name='?thelp with '+str(len(bot.servers))+" server"))
+    else:
+        await bot.change_presence(game=discord.Game(name='?thelp with '+str(len(bot.servers))+" servers"))
+    
 """server join message"""
 @bot.event
 async def on_server_join(server):
+    if(len(bot.servers)==1):
+        await bot.change_presence(game=discord.Game(name='?thelp with '+str(len(bot.servers))+" server"))
+    else:
+        await bot.change_presence(game=discord.Game(name='?thelp with '+str(len(bot.servers))+" servers"))
     f_message=0
     for channel in server.channels:
         if str(channel.permissions_for(server.me).send_messages) == "True" and str(channel.type)=="text" and f_message==0:
-            embed = discord.Embed(title="I, the translator bot, have arrived", description="?tphelp for public message \n?tdhelp for direct message \n\n ----creator: willisburg#6234----")
+            embed = discord.Embed(title="I, the discordtranslate bot, have arrived", description="Hello everyone I'm the translator bot here to translate your sentences, long or short, i don't care.\n\nIf you enjoy my work, please go vote for me at https://discordbots.org/bot/460891148668502026/vote \nthank you :3")
+            embed.set_footer(text="?thelp [i send a help message directly to you.]")
+            embed.set_author(name="author: wilisburg#6234", icon_url="https://cdn.discordapp.com/avatars/360744809717039104/5c9b878c62f027d2fbbd20e47b364cf6.jpg")
             await bot.send_message(channel, embed=embed)
             f_message=1;
 
@@ -66,14 +83,9 @@ async def r(ctx, *arg):
     embed=discord.Embed(title="", description=text)
     await bot.send_message(ctx.message.channel, "<@!"+str(ctx.message.author.id)+">: "+text)
 
-"""public help message"""    
-@bot.command(pass_context=True)
-async def phelp(ctx):
-    await bot.send_message(ctx.message.channel, "```[] ?tr 'text' s-'source language tag' d-'destination language tag' \n -translates a message \n -if source language tag is not provided it will be assigned automatically \n -if destination language tag is not provided it's automatically set as english(en) \n *do not use the apostrophe(') \n[] ?tinvite \n -sends a message to the message author with the auth to bot```")
-
 """direct help message"""
 @bot.command(pass_context=True)
-async def dhelp(ctx):
+async def help(ctx):
     await bot.send_message(ctx.message.author, "```[] ?tr 'text' s-'source language tag' d-'destination language tag' \n -translates a message \n -if source language tag is not provided it will be assigned automatically \n -if destination language tag is not provided it's automatically set as english(en) \n *do not use the apostrophe(') \n[] ?tinvite \n -sends a message to the message author with the auth to bot```")
 
 """invite to server"""
