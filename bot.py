@@ -61,7 +61,7 @@ async def r(ctx, *arg):
     text=startext[startext.find("text=")+5:startext.find(", pronunciation=")]
     
     if(text.find("<@")!=-1 and text.find(">")!=-1):
-        text=text.replace("<@", "<@!")
+        text=text.replace("<@ ", "<@!")
         
     embed=discord.Embed(title="", description=text)
     await bot.send_message(ctx.message.channel, "<@!"+str(ctx.message.author.id)+">: "+text)
