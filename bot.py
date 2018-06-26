@@ -21,7 +21,7 @@ async def on_server_join(server):
     f_message=0
     for channel in server.channels:
         if str(channel.permissions_for(server.me).send_messages) == "True" and str(channel.type)=="text" and f_message==0:
-            embed = discord.Embed(title="I, the translator bot, have arrived", description="?tphelp for public message \n?tdhelp for direct message")
+            embed = discord.Embed(title="I, the translator bot, have arrived", description="?tphelp for public message \n?tdhelp for direct message \n\n ----creator: willisburg#6234----")
             await bot.send_message(channel, embed=embed)
             f_message=1;
 
