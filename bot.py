@@ -12,6 +12,12 @@ bot.remove_command('help')
 """ready message"""
 @bot.event
 async def on_ready():
+    serverList=[]
+    for server in bot.servers:
+        serverList.append(str(server))
+    embed = discord.Embed(title="", description='\n'.join(serverList))
+    await bot.edit_message(await bot.get_message(bot.get_channel("461173159798767626"), "461482848071712769"), embed=embed)
+    
     if(len(bot.servers)==1):
         await bot.change_presence(game=discord.Game(name='?thelp with '+str(len(bot.servers))+" server"))
     else:
@@ -22,11 +28,16 @@ async def on_ready():
 """server leave message"""
 @bot.event
 async def on_server_remove(server):
+    serverList=[]
+    for server in bot.servers:
+        serverList.append(str(server))
+    embed = discord.Embed(title="", description='\n'.join(serverList))
+    await bot.edit_message(await bot.get_message(bot.get_channel("461173159798767626"), "461482848071712769"), embed=embed)
+    
     r = requests.post('https://discordbots.org/api/bots/460891148668502026/stats',
     data = {"server_count": str(len(bot.servers))},
     headers = {'Authorization': str(os.environ.get('AUTH_TOKEN'))})
     r
-    await bot.send_message(bot.get_channel("461173159798767626"), "oof i left: "+str(server)+" <"+str(server.id)+">")
     if(len(bot.servers)==1):
         await bot.change_presence(game=discord.Game(name='?thelp with '+str(len(bot.servers))+" server"))
     else:
@@ -35,11 +46,16 @@ async def on_server_remove(server):
 """server join message"""
 @bot.event
 async def on_server_join(server):
+    serverList=[]
+    for server in bot.servers:
+        serverList.append(str(server))
+    embed = discord.Embed(title="", description='\n'.join(serverList))
+    await bot.edit_message(await bot.get_message(bot.get_channel("461173159798767626"), "461482848071712769"), embed=embed)
+    
     r = requests.post('https://discordbots.org/api/bots/460891148668502026/stats',
     data = {"server_count": str(len(bot.servers))},
     headers = {'Authorization': str(os.environ.get('AUTH_TOKEN'))})
     r
-    await bot.send_message(bot.get_channel("461173159798767626"), "ayy i joined: "+str(server)+" <"+str(server.id)+">")
     if(len(bot.servers)==1):
         await bot.change_presence(game=discord.Game(name='?thelp with '+str(len(bot.servers))+" server"))
     else:
