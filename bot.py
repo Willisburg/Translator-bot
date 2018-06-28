@@ -14,7 +14,7 @@ bot.remove_command('help')
 async def on_ready():
     serverList=[]
     for server in bot.servers:
-        serverList.append(str(server))
+        serverList.append(str(server)+" <"+str(server.id)+">")
     embed = discord.Embed(title="", description='\n'.join(serverList))
     await bot.edit_message(await bot.get_message(bot.get_channel("461173159798767626"), "461482848071712769"), embed=embed)
     
@@ -30,7 +30,7 @@ async def on_ready():
 async def on_server_remove(server):
     serverList=[]
     for server in bot.servers:
-        serverList.append(str(server))
+        serverList.append(str(server)+" <"+str(server.id)+">")
     embed = discord.Embed(title="", description='\n'.join(serverList))
     await bot.edit_message(await bot.get_message(bot.get_channel("461173159798767626"), "461482848071712769"), embed=embed)
     
@@ -48,7 +48,7 @@ async def on_server_remove(server):
 async def on_server_join(server):
     serverList=[]
     for server in bot.servers:
-        serverList.append(str(server))
+        serverList.append(str(server)+" <"+str(server.id)+">")
     embed = discord.Embed(title="", description='\n'.join(serverList))
     await bot.edit_message(await bot.get_message(bot.get_channel("461173159798767626"), "461482848071712769"), embed=embed)
     
