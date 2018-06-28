@@ -138,4 +138,9 @@ async def help(ctx):
 async def invite(ctx):
     await bot.send_message(ctx.message.author, "https://discordapp.com/oauth2/authorize?client_id=460891148668502026&permissions=8192&scope=bot")
 
+"""temporary message"""
+@bot.command(pass_context=True)
+async def tempmessage(ctx):
+    await bot.send_message(ctx.message.channel, ".")
+    
 bot.run(str(os.environ.get('BOT_TOKEN')))
