@@ -118,6 +118,9 @@ async def r(ctx, *arg):
         
     embed=discord.Embed(title="", description=text)
     await bot.send_message(ctx.message.channel, "<@!"+str(ctx.message.author.id)+">: "+text)
+    
+    tcount = await bot.get_message(bot.get_channel("461173159798767626"), "461938216677802006")
+    await bot.edit_message(tcount, str(int(tcount.content)+1))
 
 """direct help message"""
 @bot.command(pass_context=True)
@@ -129,9 +132,4 @@ async def help(ctx):
 async def invite(ctx):
     await bot.send_message(ctx.message.author, "https://discordapp.com/oauth2/authorize?client_id=460891148668502026&permissions=8192&scope=bot")
 
-"""temporary message command"""
-@bot.command(pass_context=True)
-async def newmessagenow(ctx):
-    await bot.send_message(ctx.message.channel, "0")
-    
 bot.run(str(os.environ.get('BOT_TOKEN')))
