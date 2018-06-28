@@ -19,9 +19,7 @@ async def list():
         serverList[i].append(str(server))
         serverList[i].append(len(server.members))
         i+=1
-    print(serverList)
     serverList.sort(key=takeSecond, reverse=True)
-    print(serverList)
     servers=[]
     count=1
     for server in serverList:
