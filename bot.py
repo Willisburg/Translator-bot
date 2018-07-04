@@ -6,6 +6,9 @@ from googletrans import Translator
 import os
 import requests
 
+-bot = commands.Bot(command_prefix='?t')
+-bot.remove_command('help')
+
 """ready message"""
 @bot.event
 async def on_ready():  
