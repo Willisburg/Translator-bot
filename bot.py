@@ -6,35 +6,9 @@ from googletrans import Translator
 import os
 import requests
 
-bot = commands.Bot(command_prefix='?t')
-bot.remove_command('help')
-def takeSecond(elem):
-    return elem[1]
-@bot.event
-async def list():
-    serverList=[]
-    i=0
-    for server in bot.servers:
-        serverList.append([])
-        serverList[i].append(str(server))
-        serverList[i].append(len(server.members))
-        i+=1
-    serverList.sort(key=takeSecond, reverse=True)
-    servers=[]
-    count=1
-    for server in serverList:
-        servers.append(str(count)+". "+str(server[0]))
-        if count==5:
-            servers.append("**----------top 5----------**")
-        count+=1
-    embed = discord.Embed(title="", description='\n'.join(servers))
-    await bot.edit_message(await bot.get_message(bot.get_channel("461173159798767626"), "461942918446448660"), embed=embed)
-    
 """ready message"""
 @bot.event
-async def on_ready():
-    await list()
-  
+async def on_ready():  
     if(len(bot.servers)==1):
         await bot.change_presence(game=discord.Game(name='?thelp with '+str(len(bot.servers))+" server"))
     else:
@@ -44,9 +18,7 @@ async def on_ready():
 
 """server leave message"""
 @bot.event
-async def on_server_remove(server):
-    await list()
-    
+async def on_server_remove(server):    
     r = requests.post('https://discordbots.org/api/bots/460891148668502026/stats',
     data = {"server_count": str(len(bot.servers))},
     headers = {'Authorization': str(os.environ.get('AUTH_TOKEN'))})
@@ -58,9 +30,7 @@ async def on_server_remove(server):
     
 """server join message"""
 @bot.event
-async def on_server_join(server):
-    await list()
-    
+async def on_server_join(server):    
     r = requests.post('https://discordbots.org/api/bots/460891148668502026/stats',
     data = {"server_count": str(len(bot.servers))},
     headers = {'Authorization': str(os.environ.get('AUTH_TOKEN'))})
