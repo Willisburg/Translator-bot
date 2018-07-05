@@ -91,15 +91,6 @@ async def r(ctx, *arg):
         
     embed=discord.Embed(title="", description=text)
     await bot.send_message(ctx.message.channel, "<@!"+str(ctx.message.author.id)+">: "+text)
-    
-    message = await bot.get_message(bot.get_channel("461173159798767626"), "461938216677802006")
-    try:
-        mcount = message.content.replace("translated messages in total: ", "")
-    except:
-        mcount = message.content
-    icount = int(mcount)+1
-    mcount = "translated messages in total: "+str(icount)
-    await bot.edit_message(message, mcount)
 
 """direct help message"""
 @bot.command(pass_context=True)
