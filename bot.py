@@ -93,9 +93,10 @@ async def r(ctx, *arg):
     try:
         await bot.send_message(ctx.message.channel, "<@!"+str(ctx.message.author.id)+">: "+text)
     except:
-        await bot.send_message(ctx.message.channel, "invalid name: "+text)
-    except:
-        await bot.send_message(ctx.message.channel, "sorry, we're under maintanance :c we'll fix this as soon as possible")
+        try:
+            await bot.send_message(ctx.message.channel, "invalid name: "+text)
+        except:
+            await bot.send_message(ctx.message.channel, "sorry, we're under maintanance :c we'll fix this as soon as possible")
 
 """direct help message"""
 @bot.command(pass_context=True)
